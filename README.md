@@ -11,7 +11,7 @@
 
 **Please have a local postgres instance running**
 
-`git clone https://github.com/ecasilla/spark-digital-movies`  
+`git clone https://github.com/ecasilla/sparkdigital`  
 
 `cp .env.template .env`
 
