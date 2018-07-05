@@ -1,0 +1,27 @@
+{
+	"compilerOptions": {
+		"module": "commonjs",
+		"target": "es2015",
+		"noImplicitAny": false,
+		"moduleResolution": "node",
+		"sourceMap": true,
+		"outDir": "dist",
+		"baseUrl": ".",
+		"noUnusedLocals": true,
+		"noUnusedParameters":  true,
+		"noImplicitReturns":  true,
+		"noFallthroughCasesInSwitch":  true,
+		"noImplicitThis":  true,
+		"strictNullChecks":  true,
+		"paths": {
+			"*": [
+				"node_modules/*",
+				"typings/*"
+			]
+		}
+	},
+	"include": [
+		"src/**/*.ts",
+		"typings/*.ts"
+	]
+}

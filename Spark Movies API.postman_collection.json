@@ -1,0 +1,427 @@
+{
+	"info": {
+		"_postman_id": "48407521-c9f5-a278-81de-0e0f8e461a13",
+		"name": "Spark Movies API",
+		"description": "A Sample Movie Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Movies",
+			"description": "",
+			"item": [
+				{
+					"name": "Get All Movies",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": "JWT Token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://{{env}}:{{port}}/api/v1/movies",
+							"protocol": "http",
+							"host": [
+								"{{env}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"v1",
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Movie",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9a116eeb-c703-4679-82b1-03856ba3d200",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"pm.environment.set(\"movieId\", jsonData[0].id);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"The Shawshank Redemption\",\n  \"plot\": \"Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.\",\n  \"releaseDate\": \"1994-10-14\",\n  \"actors\": [\n  \"Tim Robbins\",\n  \"Morgan Freeman\",\n  \"Bob Gunton\",\n  \"William Sadler\"\n  ],\n  \"duration\": 142,\n  \"poster\":\n  \"https://images-na.ssl-images-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg\",\n  \"rating\": \"PG\"\n  }"
+						},
+						"url": {
+							"raw": "http://{{env}}:{{port}}/api/v1/movies",
+							"protocol": "http",
+							"host": [
+								"{{env}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"v1",
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get A Single Movies",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://{{env}}:{{port}}/api/v1/movies/{{movieId}}",
+							"protocol": "http",
+							"host": [
+								"{{env}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"v1",
+								"movies",
+								"{{movieId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Movie",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://{{env}}:{{port}}/api/v1/movies/{{movieId}}",
+							"protocol": "http",
+							"host": [
+								"{{env}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"v1",
+								"movies",
+								"{{movieId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Movie",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"The Shawshank Redemption\",\n  \"plot\": \"Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.\",\n  \"releaseDate\": \"1994-10-14\",\n  \"actors\": [\n  \"Tim Robbins\",\n  \"Morgan Freeman\",\n  \"Bob Gunton\",\n  \"William Sadler\"\n  ],\n  \"duration\": 123,\n  \"poster\":\n  \"https://images-na.ssl-images-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg\",\n  \"rating\": \"PG\"\n  }"
+						},
+						"url": {
+							"raw": "http://{{env}}:{{port}}/api/v1/movies/{{movieId}}",
+							"protocol": "http",
+							"host": [
+								"{{env}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"v1",
+								"movies",
+								"{{movieId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"description": "",
+			"item": [
+				{
+					"name": "Create User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9b8e58de-dd15-4779-bd3b-d87aa5d19339",
+								"type": "text/javascript",
+								"exec": [
+									"var d = pm.response.json();",
+									"pm.environment.set(\"token\", d.token);"
+								]
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "c15a7248-fb1a-4dd2-9ada-dc9cb007aa44",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\n        \"username\": \"spark2\",\n        \"password\": \"testing2\"\n}"
+						},
+						"url": {
+							"raw": "http://{{env}}:{{port}}/api/v1/users",
+							"protocol": "http",
+							"host": [
+								"{{env}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						},
+						"description": "Creates a non admin user"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://{{env}}:{{port}}/api/v1/users/:id",
+							"protocol": "http",
+							"host": [
+								"{{env}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"description": "Deletes A Users (Must have admin rights to delete users...)"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://{{env}}:{{port}}/api/v1/users",
+							"protocol": "http",
+							"host": [
+								"{{env}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						},
+						"description": "Users Index"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single User (Profile)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://{{env}}:{{port}}/api/v1/users/:id",
+							"protocol": "http",
+							"host": [
+								"{{env}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"description": "",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "b63765d5-e9ad-40b2-876d-3619f852ffe5",
+								"type": "text/javascript",
+								"exec": [
+									"pm.environment.unset(\"token\");"
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "dbe8cf9f-3ada-4ace-897c-f5e911973dd3",
+								"type": "text/javascript",
+								"exec": [
+									"var d = pm.response.json();",
+									"pm.environment.set(\"token\", d.token);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"spark\",\n  \"password\": \"testing1\"\n}"
+						},
+						"url": {
+							"raw": "http://{{env}}:{{port}}/auth/login",
+							"protocol": "http",
+							"host": [
+								"{{env}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"auth",
+								"login"
+							]
+						},
+						"description": "Login To The Site"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
